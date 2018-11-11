@@ -21,7 +21,8 @@ puts "Looking for #{band}"
 
 session.visit base_url + "search.php?search_type=band&value=" + URI.encode(band)
 
-link = session.all('a').select { |e| e.text == band }.first['href']
+link = session.all('a').select { |e| e.text == band }.first
+link = link ? link['href'] : nil
 
 # Find tabs
 tab_links = []
